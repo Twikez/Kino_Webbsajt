@@ -33,6 +33,7 @@
     "braces": "^3.0.3",
     "chokidar": "^4.0.3",
     "detect-libc": "^1.0.3",
+    "ejs": "^4.0.1",
     "express": "^5.2.1",
     "fill-range": "^7.1.1",
     "immutable": "^5.1.4",
