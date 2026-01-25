@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <title><%= movie.title %></title>
+</head>
+<body>
+  <h1><%= movie.title %></h1>
+
+  <% if (movie.image) { %>
+    <img src="<%= movie.image %>" alt="<%= movie.title %>" style="max-width: 400px;" />
+  <% } %>
+
+  <p><%= movie.intro %></p>
+
+  <a href="/movies">Tillbaka till filmlistan</a>
+</body>
+</html>

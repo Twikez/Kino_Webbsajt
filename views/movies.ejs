@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8" />
+  <title>Kino - Filmer</title>
+</head>
+<body>
+  <h1>Filmer</h1>
+<ul>
+  <% if (Array.isArray(movies) && movies.length) { %>
+    <% movies.forEach(m => { %>
+      <li>
+        <a href="/movie/<%= m.id %>"><%= m.attributes.title %></a>
+      </li>
+    <% }) %>
+  <% } else { %>
+    <li>Inga filmer hittades.</li>
+  <% } %>
+</ul>
+  <p><a href="/">Tillbaka</a></p>
+</body>
+</html>
