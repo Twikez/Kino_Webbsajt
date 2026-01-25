@@ -36,3 +36,34 @@ app.get("/movies", async (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
+
+app.get("/movie/:id", async (req, res) => {
+  try {
+    const response = await fetch(`${API_BASE}/${req.params.id}`);
+    if (!response.ok) return res.status(404).send("Filmen finns inte.");
+
+    const data = await response.json();
+    const item = data.data;             
+    const attrs = item.attributes;
+
+    const imageUrl =
+      attrs.image?.url ||
+      attrs.image?.data?.attributes?.url ||
+      "";
+
+    const fullImageUrl = imageUrl
+      ? (imageUrl.startsWith("http") ? imageUrl : `https://plankton-app-xhkom.ondigitalocean.app${imageUrl}`)
+      : "";
+
+    const movie = {
+      id: item.id,
+      title: attrs.title,
+      intro: attrs.intro,
+      imageUrl: fullImageUrl,
+    };
+
+    res.render("movie", { movie });
+  } catch {
+    res.status(500).send("Något gick fel.");
+  }
+});
