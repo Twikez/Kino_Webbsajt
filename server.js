@@ -33,14 +33,10 @@ app.get("/movies", async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
-});
-
 app.get("/movie/:id", async (req, res) => {
   try {
     const response = await fetch(`${API_BASE}/${req.params.id}`);
-    if (!response.ok) return res.status(404).send("Filmen finns inte.");
+    if (!response.ok) return res.status(404).render("error", { message: "Filmen finns inte." });
 
     const data = await response.json();
     const item = data.data;             
@@ -67,3 +63,15 @@ app.get("/movie/:id", async (req, res) => {
     res.status(500).send("Något gick fel.");
   }
 });
+
+app.use((req, res) => {
+  res.status(404).render("error", { message: "Sidan finns inte." });
+});
+
+if (process.env.NODE_ENV !== "test") {
+  app.listen(PORT, () => {
+    console.log(`Server running on http://localhost:${PORT}`);
+  });
+}
+
+export default app;
