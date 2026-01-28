@@ -1,7 +1,9 @@
-Klicka på menyn.
+Klicka på menyn högst upp på sidan.
 
-Klicka på ”På bio just nu”.
+I menyn väljer du ”På bio just nu”.
 
-Filmlistan visas.
+Då visas en lista med filmer.
 
-Klicka på en film för att se filmsidan.
+Klicka på den film du är intresserad av.
+
+Du kommer nu till filmsidan, där du kan läsa mer om filmen
